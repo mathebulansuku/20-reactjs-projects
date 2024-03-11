@@ -1,7 +1,24 @@
+import { useState } from "react";
+import data from "./data";
+
 export default function Accordion() {
+  const [selected, setSelected] = useState(null);
   return (
-    <div>
-      <h1>Accordion</h1>
+    <div className="wrapper">
+      <div className="accordion">
+        {data && data.length > 0 ? (
+          data.map((dataItem) => (
+            <div className="item">
+              <div className="title">
+                <h3>{dataItem.question}</h3>
+                <span>+</span>
+              </div>
+            </div>
+          ))
+        ) : (
+          <div>Data not found!</div>
+        )}
+      </div>
     </div>
   );
 }
